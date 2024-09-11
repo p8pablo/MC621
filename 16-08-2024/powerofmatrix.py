@@ -1,6 +1,5 @@
 MOD = 10**9 + 7
 
-
 def matMul(a, b, n):
     ans = [[0] * n for _ in range(n)]
     for i in range(n):
@@ -21,20 +20,17 @@ def matPow(matrix, k, n):
         k //= 2
     return ans
 
-
 def main():
+    t = int(input())
+    while(t):
+        m, n = map(int, input().split())
+        matrix = [[] for _ in range(m)]
+        for i in range(m):
+            matrix[i] = [int (x) for x in input().split()]
+        ans = matPow(matrix, n, m)
 
-    n, m, k = map(int, input().split())
-    adj = [[0] * n for _ in range(n)]
-
-    for _ in range(m):
-        v_in, v_out = map(int, input().split())
-        adj[v_in - 1][v_out - 1] += 1
-
-    adj_k = matPow(adj, k, n)
-
-    print(adj_k[0][n - 1] % MOD)
+        for i in range(m):
+            print(*ans[i])
+        t -= 1
     return
-
-
 main()
